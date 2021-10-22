@@ -10,11 +10,11 @@ packages:
     git: https://github.com/SimulaVR/godot-haskell.git
     pantry-tree:
       size: 65146
-      sha256: c920d6e114c6e871c3875f8f4f90d718d810543f4dca882c1bf0302ad62e2cc3
-    commit: 8901948b28193a2b72bdf6eea7801ac58a27379f
+      sha256: f5db8a04b5898043c25a5de8f80c711a3a9019219e704a8f68d4da51169330c1
+    commit: cabc06451292a9516ca34348094e8875d7b89816
   original:
     git: https://github.com/SimulaVR/godot-haskell.git
-    commit: 8901948b28193a2b72bdf6eea7801ac58a27379f
+    commit: cabc06451292a9516ca34348094e8875d7b89816
 snapshots:
 - completed:
     size: 567677

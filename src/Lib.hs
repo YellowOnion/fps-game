@@ -18,4 +18,4 @@ import Project.Support
 import Project.Requirements
 
 exports :: GdnativeHandle -> IO ()
-exports = registerAll' @Nodes @'[Player]
+exports = registerOne @Player

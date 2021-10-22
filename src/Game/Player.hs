@@ -1,5 +1,3 @@
--- |
-
 {-# LANGUAGE FlexibleContexts, FunctionalDependencies, MultiParamTypeClasses,
   UndecidableInstances, OverloadedStrings, TemplateHaskell, TypeApplications,
   TypeFamilies, DataKinds, TypeOperators, FlexibleInstances, RankNTypes,
@@ -9,6 +7,7 @@
 
 module Game.Player where
 
+import Control.Monad
 import Control.Lens
 
 import Godot
@@ -25,8 +24,10 @@ import Linear.V3
 import Project.Support
 import Project.Scenes.Player ()
 
+import Game.Utils
+
 data Player = Player
-  { _pBase         :: BaseClass Player
+  { _pBase         :: KinematicBody
   , _pVelocity     :: MVar (V3 Float)
   , _pAirTime      :: MVar (Float)
   , _pJumpCooldown :: MVar (Float)
@@ -53,8 +54,21 @@ instance NodeInit Player where
 
 instance NodeMethod Player "_ready" '[] (IO ()) where
   nodeMethod self = do
-    ps <- getSingleton @ProjectSettings
-    return ()
-    --a <- fromGodotVariant =<< PS.get_setting ps "physics/3d/default_gravity_vector"
-    --swapMVar (_pGVector self) a
-    --swapMVar (_pGMag self) =<< fromGodotVariant =<< PS.get_setting ps "physics/3d/default_gravity"
+    Just ps <- getSingleton @ProjectSettings
+    gvecv :: GodotVariant <- PS.get_setting ps =<< toLowLevel "physics/3d/default_gravity_vector"
+    vecv <- fromLowLevel gvecv
+    case vecv of
+      VariantVector3 vec -> void $ swapMVar (_pGVector self) =<< fromLowLevel vec
+      _ -> putStrLn "error loading settings"
+    magv <- fromLowLevel =<< PS.get_setting ps =<< toLowLevel "physics/3d/default_gravity"
+    case magv of
+       VariantReal m -> void $ swapMVar (_pGMag self) m
+       _ -> putStrLn "error loading gravity mag"
+
+instance NodeMethod Player "_physics_process" '[Float] (IO ()) where
+  nodeMethod self delta = do
+    readMVar (_pGVector self) >>= print
+
+
+setupNode ''Player "Player" "Player"
+deriveBase ''Player

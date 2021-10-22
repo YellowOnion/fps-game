@@ -47,7 +47,7 @@ instance SceneNode        "Player" "CollisionShape" where
 instance SceneNode        "Player" "Player" where
   type SceneNodeType      "Player" "Player" = KinematicBody
   type SceneNodeName      "Player" "Player" = "Player"
-  type SceneNodeIsHaskell "Player" "Player" = 'Nothing
+  type SceneNodeIsHaskell "Player" "Player" = 'Just '("Player", "Player")
 
 
 instance SceneNode        "Player" "RayCast" where

@@ -1,10 +1,13 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://GUI.gdns" type="Script" id=1]
 [ext_resource path="res://assets/ShareTechFont.tres" type="DynamicFont" id=2]
 
+[sub_resource type="NativeScript" id=1]
+resource_name = "GUI"
+class_name = "GUI"
+
 [node name="GUI" type="CanvasLayer"]
-script = ExtResource( 1 )
+script = SubResource( 1 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0

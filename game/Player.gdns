@@ -1,8 +1,8 @@
 [gd_resource type="NativeScript" load_steps=2 format=2]
 
-[sub_resource type="GDNativeLibrary" id=1]
+[ext_resource path="res://lib/libfps-game.gdnlib" type="GDNativeLibrary" id=1]
 
 [resource]
-resource_name = "World"
+resource_name = "Player"
 class_name = "Player"
-library = SubResource( 1 )
+library = ExtResource( 1 )

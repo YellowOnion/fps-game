@@ -3,4 +3,4 @@ resolver: lts-17.14
 
 extra-deps:
    - git: https://github.com/SimulaVR/godot-haskell.git
-     commit: 8901948b28193a2b72bdf6eea7801ac58a27379f
+     commit: cabc06451292a9516ca34348094e8875d7b89816

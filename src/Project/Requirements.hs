@@ -5,4 +5,4 @@
 module Project.Requirements where
 import Project.Support
 
-type Nodes = '[]
+type Nodes = '[OneResourceNode "GUI" "GUI", OneResourceNode "Player" "Player"]
