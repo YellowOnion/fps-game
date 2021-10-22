@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://GUI.gdns" type="Script" id=1]
+[ext_resource path="res://assets/ShareTechFont.tres" type="DynamicFont" id=2]
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.8909
+margin_bottom = -0.890869
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Speed" type="Label" parent="HBoxContainer"]
+margin_left = 720.0
+margin_top = 422.0
+margin_right = 772.0
+margin_bottom = 477.0
+custom_fonts/font = ExtResource( 2 )
+text = "10"
+
+[node name="Units" type="Label" parent="HBoxContainer"]
+margin_left = 776.0
+margin_top = 422.0
+margin_right = 880.0
+margin_bottom = 477.0
+custom_fonts/font = ExtResource( 2 )
+text = "km/h"
