@@ -23,6 +23,7 @@ library
   exposed-modules: Lib
   other-modules:
     Game.Player
+    Game.Utils
     Project.Requirements
     Project.Scenes.Player
     Project.Support

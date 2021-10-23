@@ -13,6 +13,11 @@ _global_script_class_icons={
 
 }
 
+[Input]
+
+Mouse/Sensitivity=1.0
+Mouse/Yaw_Aspect_Ratio=1.0
+
 [application]
 
 config/name="SomeFPSGame"
