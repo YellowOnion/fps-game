@@ -86,8 +86,8 @@ instance NodeMethod Player "_input" '[GodotVariant] (IO ()) where
     case classStr of
       "InputEventMouseMotion" -> if captured then do
         [sens, yaw_as] <- getPSsettings ["Input/Mouse/Sensitivity", "Input/Mouse/Yaw_Aspect_Ratio"]
-
         moEvent :: InputEventMouseMotion <- fromGodotVariant eventGV
+
         mouseRel :: V2 Float <- fromLowLevel =<< Input.get_relative moEvent
 
         Spatial.rotate_x cam $ negate (mouseRel ^. _y) * sens * mouse_coeff
@@ -113,11 +113,6 @@ instance NodeMethod Player "_input" '[GodotVariant] (IO ()) where
           else do
           Input.set_mouse_mode inp Input._MOUSE_MODE_CAPTURED
           swapMVar (_pCaptured self) True >> return ()
-
-
-    --when (isMouseMotion) $ do
-    --  mouseRel :: V2 Float <- fromLowLevel =<< Input.get_relative event
-    -- print mouseRel
 
 instance NodeMethod Player "_physics_process" '[Float] (IO ()) where
   nodeMethod self delta = do
